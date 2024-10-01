@@ -33,6 +33,7 @@ export async function uploadPdf(pdfLink: PdfLink) {
       // const pdfData = await PdfParse(pdfResponse.data)
       if (bucketName) {
         const file = storage.bucket(bucketName).file(fileName);
+        console.log(fileName);
         await file.save(pdfResponse.data, {
           metadata: {
             contentType: 'application/pdf',
