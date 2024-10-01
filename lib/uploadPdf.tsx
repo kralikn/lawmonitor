@@ -1,10 +1,8 @@
-// uploadPdf.ts
 import axios from 'axios'
 import { storage } from './gsc.config'
 import https from 'https'
 import { checkIfFileExists } from './checkIfFileExist';
 import PdfParse from 'pdf-parse'
-// import { PDFDocument } from 'pdf-lib'
 
 interface PdfLink {
   url: string;
