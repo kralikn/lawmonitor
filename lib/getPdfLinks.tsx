@@ -3,9 +3,9 @@ import * as cheerio from 'cheerio'
 import https from 'https'
 
 const BASE_URL = process.env.BASE_URL
-// const agent = new https.Agent({
-//   rejectUnauthorized: false
-// })
+const agent = new https.Agent({
+  rejectUnauthorized: false
+})
 
 interface PdfLink {
   url: string;
@@ -18,8 +18,8 @@ export async function getPdfLinks(selectedDate: Date): Promise<PdfLink[]> {
   let stopScraping = false;
 
   while (!stopScraping) {
-    // const response = await axios.get(`${BASE_URL}?page=${currentPage}`, { httpsAgent: agent });
-    const response = await axios.get(`${BASE_URL}?page=${currentPage}`);
+    const response = await axios.get(`${BASE_URL}?page=${currentPage}`, { httpsAgent: agent });
+    // const response = await axios.get(`${BASE_URL}?page=${currentPage}`);
     const $ = cheerio.load(response.data);
 
     $('div[role="group"].btn-block.btn-group-vertical').each((index, element) => {

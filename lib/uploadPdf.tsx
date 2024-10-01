@@ -10,9 +10,9 @@ interface PdfLink {
   url: string;
   date: string;
 }
-// const agent = new https.Agent({
-//   rejectUnauthorized: false
-// })
+const agent = new https.Agent({
+  rejectUnauthorized: false
+})
 
 export async function uploadPdf(pdfLink: PdfLink) {
   const urlParts = pdfLink.url.split('/')
@@ -28,8 +28,8 @@ export async function uploadPdf(pdfLink: PdfLink) {
 
   try {
 
-    const pdfResponse = await axios.get(pdfLink.url, { responseType: 'arraybuffer' })
-    // const pdfResponse = await axios.get(pdfLink.url, { responseType: 'arraybuffer', httpsAgent: agent })
+    // const pdfResponse = await axios.get(pdfLink.url, { responseType: 'arraybuffer' })
+    const pdfResponse = await axios.get(pdfLink.url, { responseType: 'arraybuffer', httpsAgent: agent })
 
     if (pdfResponse.data) {
       // const pdfData = await PdfParse(pdfResponse.data)
